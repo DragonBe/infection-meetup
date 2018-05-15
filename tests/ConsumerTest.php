@@ -387,15 +387,16 @@ class ConsumerTest extends TestCase
     /**
      * Testing that an exception is thrown when a given group was not found
      *
-     * @param  string $groupName The name of the Meetup group
-     * @param  string $eventId The ID of the Meetup group event
+     * @param string $groupName The name of the Meetup group
+     * @param string $eventId   The ID of the Meetup group event
+     *
      * @return void
      *
      * @covers                   \DragonBe\Meetup\Consumer::__construct()
      * @covers                   \DragonBe\Meetup\Consumer::getGroupEvent()
      * @expectedException        \InvalidArgumentException
      * @expectedExceptionMessage Requested group was not found on Meetup.com
-     * @dataProvider badEventIdProvider
+     * @dataProvider             badEventIdProvider
      */
     public function testConsumerThrowsExceptionWhenGroupEventDoesNotExists(string $groupName, string $eventId)
     {

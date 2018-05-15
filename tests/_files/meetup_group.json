@@ -1,0 +1,80 @@
+{
+  "id": 18381650,
+  "name": "PHP Leuven - Web Innovation Group",
+  "status": "active",
+  "link": "https://www.meetup.com/PHP-Leuven-Web-Innovation-Group/",
+  "urlname": "PHP-Leuven-Web-Innovation-Group",
+  "description": "<p>A PHP user group to connect with professionals as well as enthousiasts to share innovative ideas to improve the web and it's development, starting from within your local town. (Where else than Leuven, one of the world's IT capitals!)</p>",
+  "created": 1422297349000,
+  "city": "Leuven",
+  "country": "BE",
+  "localized_country_name": "Belgium",
+  "localized_location": "Leuven, Belgium",
+  "state": "",
+  "join_mode": "open",
+  "visibility": "public",
+  "lat": 50.88,
+  "lon": 4.7,
+  "members": 303,
+  "organizer": {
+    "id": 140063382,
+    "name": "Bart R.",
+    "bio": "",
+    "photo": {
+      "id": 195190712,
+      "highres_link": "https://secure.meetupstatic.com/photos/member/2/9/d/8/highres_195190712.jpeg",
+      "photo_link": "https://secure.meetupstatic.com/photos/member/2/9/d/8/member_195190712.jpeg",
+      "thumb_link": "https://secure.meetupstatic.com/photos/member/2/9/d/8/thumb_195190712.jpeg",
+      "type": "member",
+      "base_url": "https://secure.meetupstatic.com"
+    }
+  },
+  "who": "elephpants",
+  "group_photo": {
+    "id": 442800865,
+    "highres_link": "https://secure.meetupstatic.com/photos/event/3/6/1/highres_442800865.jpeg",
+    "photo_link": "https://secure.meetupstatic.com/photos/event/3/6/1/600_442800865.jpeg",
+    "thumb_link": "https://secure.meetupstatic.com/photos/event/3/6/1/thumb_442800865.jpeg",
+    "type": "event",
+    "base_url": "https://secure.meetupstatic.com"
+  },
+  "key_photo": {
+    "id": 451410213,
+    "highres_link": "https://secure.meetupstatic.com/photos/event/7/6/0/5/highres_451410213.jpeg",
+    "photo_link": "https://secure.meetupstatic.com/photos/event/7/6/0/5/600_451410213.jpeg",
+    "thumb_link": "https://secure.meetupstatic.com/photos/event/7/6/0/5/thumb_451410213.jpeg",
+    "type": "event",
+    "base_url": "https://secure.meetupstatic.com"
+  },
+  "timezone": "Europe/Brussels",
+  "next_event": {
+    "id": "sctxfnyxjbkb",
+    "name": "Infection",
+    "yes_rsvp_count": 4,
+    "time": 1528390800000,
+    "utc_offset": 7200000
+  },
+  "category": {
+    "id": 34,
+    "name": "Tech",
+    "shortname": "tech",
+    "sort_name": "Tech"
+  },
+  "meta_category": {
+    "id": 292,
+    "shortname": "tech",
+    "name": "Tech",
+    "sort_name": "Tech",
+    "photo": {
+      "id": 450131949,
+      "highres_link": "https://secure.meetupstatic.com/photos/event/2/e/a/d/highres_450131949.jpeg",
+      "photo_link": "https://secure.meetupstatic.com/photos/event/2/e/a/d/600_450131949.jpeg",
+      "thumb_link": "https://secure.meetupstatic.com/photos/event/2/e/a/d/thumb_450131949.jpeg",
+      "type": "event",
+      "base_url": "https://secure.meetupstatic.com"
+    },
+    "category_ids": [
+      34
+    ]
+  }
+}

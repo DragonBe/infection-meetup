@@ -1,0 +1,20 @@
+{
+  "id": 6536041,
+  "name": "Michelangelo van D.",
+  "bio": "I'm a senior #php architect, co-founder and #ceo of @in2itvof, #community leader at @phpbenelux, coach at @CoderDojoBelgium, #digitalnomad, likes #coffee.",
+  "status": "active",
+  "joined": 1203796644000,
+  "city": "Mechelen",
+  "country": "be",
+  "localized_country_name": "Belgium",
+  "lat": 51.03,
+  "lon": 4.47,
+  "photo": {
+    "id": 272756855,
+    "highres_link": "https://secure.meetupstatic.com/photos/member/d/e/1/7/highres_272756855.jpeg",
+    "photo_link": "https://secure.meetupstatic.com/photos/member/d/e/1/7/member_272756855.jpeg",
+    "thumb_link": "https://secure.meetupstatic.com/photos/member/d/e/1/7/thumb_272756855.jpeg",
+    "type": "member",
+    "base_url": "https://secure.meetupstatic.com"
+  }
+}

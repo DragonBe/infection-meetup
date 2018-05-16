@@ -1,0 +1,192 @@
+[
+  {
+    "created": 1523528512000,
+    "updated": 1523528512000,
+    "response": "yes",
+    "guests": 0,
+    "event": {
+      "id": "sctxfnyxjbkb",
+      "name": "Infection",
+      "yes_rsvp_count": 0,
+      "time": 1528390800000,
+      "utc_offset": 7200000
+    },
+    "group": {
+      "id": 18381650,
+      "urlname": "PHP-Leuven-Web-Innovation-Group",
+      "name": "PHP Leuven - Web Innovation Group",
+      "status": "active",
+      "who": "elephpants",
+      "members": 303,
+      "join_mode": "open",
+      "localized_location": "Leuven, Belgium",
+      "group_photo": {
+        "id": 442800865,
+        "highres_link": "https://secure.meetupstatic.com/photos/event/3/6/1/highres_442800865.jpeg",
+        "photo_link": "https://secure.meetupstatic.com/photos/event/3/6/1/600_442800865.jpeg",
+        "thumb_link": "https://secure.meetupstatic.com/photos/event/3/6/1/thumb_442800865.jpeg",
+        "type": "event",
+        "base_url": "https://secure.meetupstatic.com"
+      }
+    },
+    "member": {
+      "id": 140063382,
+      "name": "Bart R.",
+      "bio": "Symfony developer at KU Leuven",
+      "photo": {
+        "id": 195190712,
+        "highres_link": "https://secure.meetupstatic.com/photos/member/2/9/d/8/highres_195190712.jpeg",
+        "photo_link": "https://secure.meetupstatic.com/photos/member/2/9/d/8/member_195190712.jpeg",
+        "thumb_link": "https://secure.meetupstatic.com/photos/member/2/9/d/8/thumb_195190712.jpeg",
+        "type": "member",
+        "base_url": "https://secure.meetupstatic.com"
+      },
+      "role": "organizer",
+      "event_context": {
+        "host": true
+      }
+    }
+  },
+  {
+    "created": 1526144536000,
+    "updated": 1526144536000,
+    "response": "yes",
+    "guests": 0,
+    "event": {
+      "id": "sctxfnyxjbkb",
+      "name": "Infection",
+      "yes_rsvp_count": 0,
+      "time": 1528390800000,
+      "utc_offset": 7200000
+    },
+    "group": {
+      "id": 18381650,
+      "urlname": "PHP-Leuven-Web-Innovation-Group",
+      "name": "PHP Leuven - Web Innovation Group",
+      "status": "active",
+      "who": "elephpants",
+      "members": 303,
+      "join_mode": "open",
+      "localized_location": "Leuven, Belgium",
+      "group_photo": {
+        "id": 442800865,
+        "highres_link": "https://secure.meetupstatic.com/photos/event/3/6/1/highres_442800865.jpeg",
+        "photo_link": "https://secure.meetupstatic.com/photos/event/3/6/1/600_442800865.jpeg",
+        "thumb_link": "https://secure.meetupstatic.com/photos/event/3/6/1/thumb_442800865.jpeg",
+        "type": "event",
+        "base_url": "https://secure.meetupstatic.com"
+      }
+    },
+    "member": {
+      "id": 130411202,
+      "name": "Emily C.",
+      "bio": "Developer@Cegeka",
+      "photo": {
+        "id": 268336614,
+        "highres_link": "https://secure.meetupstatic.com/photos/member/4/0/e/6/highres_268336614.jpeg",
+        "photo_link": "https://secure.meetupstatic.com/photos/member/4/0/e/6/member_268336614.jpeg",
+        "thumb_link": "https://secure.meetupstatic.com/photos/member/4/0/e/6/thumb_268336614.jpeg",
+        "type": "member",
+        "base_url": "https://secure.meetupstatic.com"
+      },
+      "role": "assistant_organizer",
+      "event_context": {
+        "host": false
+      }
+    }
+  },
+  {
+    "created": 1523528512000,
+    "updated": 1523528512000,
+    "response": "yes",
+    "guests": 0,
+    "event": {
+      "id": "sctxfnyxjbkb",
+      "name": "Infection",
+      "yes_rsvp_count": 0,
+      "time": 1528390800000,
+      "utc_offset": 7200000
+    },
+    "group": {
+      "id": 18381650,
+      "urlname": "PHP-Leuven-Web-Innovation-Group",
+      "name": "PHP Leuven - Web Innovation Group",
+      "status": "active",
+      "who": "elephpants",
+      "members": 303,
+      "join_mode": "open",
+      "localized_location": "Leuven, Belgium",
+      "group_photo": {
+        "id": 442800865,
+        "highres_link": "https://secure.meetupstatic.com/photos/event/3/6/1/highres_442800865.jpeg",
+        "photo_link": "https://secure.meetupstatic.com/photos/event/3/6/1/600_442800865.jpeg",
+        "thumb_link": "https://secure.meetupstatic.com/photos/event/3/6/1/thumb_442800865.jpeg",
+        "type": "event",
+        "base_url": "https://secure.meetupstatic.com"
+      }
+    },
+    "member": {
+      "id": 6536041,
+      "name": "Michelangelo van D.",
+      "bio": "I'm a senior #php architect, co-founder and #ceo of @in2itvof, #community leader at @phpbenelux, coach at @CoderDojoBelgium, #digitalnomad, likes #coffee.",
+      "photo": {
+        "id": 264269699,
+        "highres_link": "https://secure.meetupstatic.com/photos/member/7/4/0/3/highres_264269699.jpeg",
+        "photo_link": "https://secure.meetupstatic.com/photos/member/7/4/0/3/member_264269699.jpeg",
+        "thumb_link": "https://secure.meetupstatic.com/photos/member/7/4/0/3/thumb_264269699.jpeg",
+        "type": "member",
+        "base_url": "https://secure.meetupstatic.com"
+      },
+      "event_context": {
+        "host": true
+      }
+    }
+  },
+  {
+    "created": 1526303634000,
+    "updated": 1526303634000,
+    "response": "yes",
+    "guests": 0,
+    "event": {
+      "id": "sctxfnyxjbkb",
+      "name": "Infection",
+      "yes_rsvp_count": 0,
+      "time": 1528390800000,
+      "utc_offset": 7200000
+    },
+    "group": {
+      "id": 18381650,
+      "urlname": "PHP-Leuven-Web-Innovation-Group",
+      "name": "PHP Leuven - Web Innovation Group",
+      "status": "active",
+      "who": "elephpants",
+      "members": 303,
+      "join_mode": "open",
+      "localized_location": "Leuven, Belgium",
+      "group_photo": {
+        "id": 442800865,
+        "highres_link": "https://secure.meetupstatic.com/photos/event/3/6/1/highres_442800865.jpeg",
+        "photo_link": "https://secure.meetupstatic.com/photos/event/3/6/1/600_442800865.jpeg",
+        "thumb_link": "https://secure.meetupstatic.com/photos/event/3/6/1/thumb_442800865.jpeg",
+        "type": "event",
+        "base_url": "https://secure.meetupstatic.com"
+      }
+    },
+    "member": {
+      "id": 192238056,
+      "name": "Rob H.",
+      "bio": "Backend developer - coding addict",
+      "photo": {
+        "id": 249403692,
+        "highres_link": "https://secure.meetupstatic.com/photos/member/a/a/a/c/highres_249403692.jpeg",
+        "photo_link": "https://secure.meetupstatic.com/photos/member/a/a/a/c/member_249403692.jpeg",
+        "thumb_link": "https://secure.meetupstatic.com/photos/member/a/a/a/c/thumb_249403692.jpeg",
+        "type": "member",
+        "base_url": "https://secure.meetupstatic.com"
+      },
+      "event_context": {
+        "host": false
+      }
+    }
+  }
+]

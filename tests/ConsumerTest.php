@@ -6,15 +6,16 @@ namespace DragonBe\Test\Meetup;
 
 use DragonBe\Meetup\Consumer;
 use DragonBe\Meetup\Event;
-use DragonBe\Meetup\Factory\ConsumerFactory;
 use DragonBe\Meetup\Group;
+use DragonBe\Meetup\Hydrator\JsonCollectionCompositHydrator;
 use DragonBe\Meetup\Hydrator\JsonCollectionHydrator;
 use DragonBe\Meetup\Hydrator\JsonHydrator;
+use DragonBe\Meetup\Member;
+use DragonBe\Meetup\Rsvp;
 use Faker\Factory;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ConnectException;
-use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Request;
@@ -90,13 +91,19 @@ class ConsumerTest extends TestCase
     {
         $hydrator = new JsonHydrator();
         $collectionHydrator = new JsonCollectionHydrator();
+        $compositeHydrator = new JsonCollectionCompositHydrator();
         $group = new Group();
         $event = new Event();
+        $member = new Member();
+        $rsvp = new Rsvp();
         $consumer = new Consumer(
             $hydrator,
             $collectionHydrator,
+            $compositeHydrator,
             $group,
             $event,
+            $member,
+            $rsvp,
             $client,
             $this->apiKey
         );
@@ -452,6 +459,208 @@ class ConsumerTest extends TestCase
         $consumer = $this->getConsumer($client);
         $event = $consumer->getGroupEvent($groupName, $eventId);
         $this->assertSame($eventId, $event->getId());
+    }
+
+
+
+    /**
+     * Testing that we receive an exception when we cannot connect
+     * to the meetup service to retrieve Meetup.com group members
+     *
+     * @return void
+     *
+     * @covers                   \DragonBe\Meetup\Consumer::__construct()
+     * @covers                   \DragonBe\Meetup\Consumer::getGroupMemberCollection()
+     * @expectedException        \RuntimeException
+     * @expectedExceptionMessage Cannot connect with Meetup.com API
+     * @dataProvider             badUriProvider
+     */
+    public function testConsumerThrowsExceptionWhenConnectionToApiFailsForGroupMembers(string $uri)
+    {
+        $mock = new MockHandler(
+            [
+                new ConnectException(
+                    'Error Communicating with Server',
+                    new Request('GET', 'test')
+                ),
+            ]
+        );
+
+        $handler = HandlerStack::create($mock);
+        $client = new Client(['handler' => $handler]);
+        $consumer = $this->getConsumer($client);
+        $memberCollection = $consumer->getGroupMemberCollection($this->testGroup);
+
+        $this->assertNull(
+            $memberCollection,
+            'Expected an empty connection, but it seems to have a value'
+        );
+    }
+
+    /**
+     * Testing that an exception is thrown when a given group was not found
+     * when retrieving members
+     *
+     * @param string $groupName The name of the Meetup group
+     *
+     * @return void
+     *
+     * @covers                   \DragonBe\Meetup\Consumer::__construct()
+     * @covers                   \DragonBe\Meetup\Consumer::getGroupMemberCollection()
+     * @expectedException        \InvalidArgumentException
+     * @expectedExceptionMessage Requested group was not found on Meetup.com
+     * @dataProvider             badEventIdProvider
+     */
+    public function testConsumerThrowsExceptionWhenGroupDoesNotExistsForMembers(string $groupName)
+    {
+        $mock = new MockHandler(
+            [
+                new ClientException(
+                    'Group not found',
+                    new Request('GET', 'test'),
+                    new Response(404, ['Content-Legnth: 0'])
+                ),
+            ]
+        );
+
+        $handler = HandlerStack::create($mock);
+        $client = new Client(['handler' => $handler]);
+        $consumer = $this->getConsumer($client);
+        $members = $consumer->getGroupMemberCollection($groupName);
+
+        $this->assertNull(
+            $members,
+            'Expected an empty connection, but it seems to have a value'
+        );
+    }
+
+    /**
+     * Test that we can retrieve a collection of group members
+     *
+     * @param string $groupName The name of the group
+     *
+     * @return void
+     *
+     * @covers       \DragonBe\Meetup\Consumer::__construct()
+     * @covers       \DragonBe\Meetup\Consumer::getGroupMemberCollection()
+     * @dataProvider eventIdProvider
+     */
+    public function testConsumerCanRetrieveGroupMemberCollection(string $groupName)
+    {
+        $testData = file_get_contents(__DIR__ . '/_files/meetup_group_members.json');
+        $mock = new MockHandler(
+            [
+                new Response(
+                    200,
+                    ['Content-Type: application/json'],
+                    $testData
+                ),
+            ]
+        );
+        $handler = HandlerStack::create($mock);
+        $client = new Client(['handler' => $handler]);
+        $consumer = $this->getConsumer($client);
+        $memberCollection = $consumer->getGroupMemberCollection($groupName);
+        $this->assertInstanceOf(\Iterator::class, $memberCollection);
+        $this->assertCount(200, $memberCollection);
+    }
+
+    /**
+     * Tests that we capture exceptions when connection fails
+     * while retrieving RSVP's for a group event
+     *
+     * @return void
+     *
+     * @dataProvider             eventIdProvider
+     * @expectedException        \RuntimeException
+     * @expectedExceptionMessage Cannot connect with Meetup.com API
+     */
+    public function testExceptionForConnectionFailureRetrievingGroupEventRsvps(
+        string $groupName,
+        string $eventId
+    ) {
+        $mockHandler = new MockHandler(
+            [
+                new ConnectException(
+                    'Error Communicating with Server',
+                    new Request('GET', 'test')
+                ),
+            ]
+        );
+        $handler = HandlerStack::create($mockHandler);
+        $client = new Client(['handler' => $handler]);
+        $consumer = $this->getConsumer($client);
+        $rsvpCollection = $consumer->getGroupEventRsvps($groupName, $eventId);
+        $this->assertNull(
+            $rsvpCollection,
+            'Expecting RSVP collection to be empty, contains values'
+        );
+    }
+
+    /**
+     * Tests that we capture exceptions when connection fails
+     * while retrieving RSVP's for a group event
+     *
+     * @return void
+     *
+     * @dataProvider             eventIdProvider
+     * @expectedException        \InvalidArgumentException
+     * @expectedExceptionMessage Requested group was not found on Meetup.com
+     */
+    public function testExceptionForGroupNotFound(
+        string $groupName,
+        string $eventId
+    ) {
+        $mock = new MockHandler(
+            [
+                new ClientException(
+                    'Group not found',
+                    new Request('GET', 'test'),
+                    new Response(404, ['Content-Legnth: 0'])
+                ),
+            ]
+        );
+
+        $handler = HandlerStack::create($mock);
+        $client = new Client(['handler' => $handler]);
+        $consumer = $this->getConsumer($client);
+        $rsvpCollection = $consumer->getGroupEventRsvps($groupName, $eventId);
+
+        $this->assertNull(
+            $rsvpCollection,
+            'Expecting RSVP collection to be empty, contains values'
+        );
+    }
+
+    /**
+     * Tests that we retrieve RSVP's for a Meetup.com group
+     * event.
+     *
+     * @return void
+     *
+     * @dataProvider eventIdProvider
+     * @covers       \DragonBe\Meetup\Consumer::getGroupEventRsvps()
+     */
+    public function testCanRetrieveRsvpsFromGroupEvent(
+        string $groupName,
+        string $eventId
+    ) {
+        $testData = file_get_contents(__DIR__ . '/_files/meetup_group_event_rsvps.json');
+        $mock = new MockHandler(
+            [
+                new Response(
+                    200,
+                    ['Content-Type: application/json'],
+                    $testData
+                ),
+            ]
+        );
+        $handler = HandlerStack::create($mock);
+        $client = new Client(['handler' => $handler]);
+        $consumer = $this->getConsumer($client);
+        $rsvpCollection = $consumer->getGroupEventRsvps($groupName, $eventId);
+        $this->assertInstanceOf(\Iterator::class, $rsvpCollection);
+        $this->assertCount(4, $rsvpCollection);
     }
 
 }

@@ -2,3 +2,4 @@
 /build/
 phpunit.xml
 phpcs.xml
+infection.json

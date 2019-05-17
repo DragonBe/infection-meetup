@@ -75,4 +75,19 @@ class EventTest extends TestCase
         $this->assertSame($id, $event->getId());
         $this->assertSame($rsvp, $event->getRsvp());
     }
+
+    /**
+     * Testing that our event is initialised properly
+     *
+     * @group mutation
+     * @covers \DragonBe\Meetup\Event::__construct
+     * @covers \DragonBe\Meetup\Event::getId
+     * @covers \DragonBe\Meetup\Event::getRsvp
+     */
+    public function testEventIsInitialisedProperly()
+    {
+        $event = new Event();
+        $this->assertSame(Event::DEFAULT_EVENT_ID, $event->getId());
+        $this->assertSame(Event::DEFAULT_RSVP_COUNT, $event->getRsvp());
+    }
 }

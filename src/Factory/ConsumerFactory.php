@@ -15,6 +15,12 @@ use GuzzleHttp\Client;
 
 class ConsumerFactory implements FactoryInterface
 {
+    const MAX_ALLOWED_ARGUMENTS = 1;
+    const DEFAULT_CLIENT_USER_AGENT = 'DragonBe\Infection-Meetup-0.0.1';
+    const DEFAULT_CLIENT_ACCEPT = 'application/json';
+    const DEFAULT_CLIENT_ORIGIN = 'http://localhost:9876';
+    const DEFAULT_CLIENT_TLS_VERIFICATION = true;
+
     /**
      * @inheritdoc
      */
@@ -22,7 +28,7 @@ class ConsumerFactory implements FactoryInterface
     {
         $apiKey = '';
         $uri = Consumer::BASE_API_URI;
-        if (1 === func_num_args()) {
+        if (self::MAX_ALLOWED_ARGUMENTS === func_num_args()) {
             $uri = func_get_arg(0);
         }
         $hydrator = new JsonHydrator();
@@ -35,11 +41,11 @@ class ConsumerFactory implements FactoryInterface
         $client = new Client(
             [
                 'base_uri' => $uri,
-                'verify' => true,
-                'headers' => [
-                    'User-Agent' => 'DragonBe\Infection-Meetup-0.0.1',
-                    'Accept'     => 'application/json',
-                    'Origin'      => 'http://localhost:9876',
+                'verify'   => self::DEFAULT_CLIENT_TLS_VERIFICATION,
+                'headers'  => [
+                    'User-Agent' => self::DEFAULT_CLIENT_USER_AGENT,
+                    'Accept'     => self::DEFAULT_CLIENT_ACCEPT,
+                    'Origin'     => self::DEFAULT_CLIENT_ORIGIN,
                 ],
             ]
         );

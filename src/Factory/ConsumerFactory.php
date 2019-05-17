@@ -19,6 +19,7 @@ class ConsumerFactory implements FactoryInterface
     const DEFAULT_CLIENT_USER_AGENT = 'DragonBe\Infection-Meetup-0.0.1';
     const DEFAULT_CLIENT_ACCEPT = 'application/json';
     const DEFAULT_CLIENT_ORIGIN = 'http://localhost:9876';
+    const DEFAULT_CLIENT_TLS_VERIFICATION = true;
 
     /**
      * @inheritdoc
@@ -40,7 +41,7 @@ class ConsumerFactory implements FactoryInterface
         $client = new Client(
             [
                 'base_uri' => $uri,
-                'verify'   => true,
+                'verify'   => self::DEFAULT_CLIENT_TLS_VERIFICATION,
                 'headers'  => [
                     'User-Agent' => self::DEFAULT_CLIENT_USER_AGENT,
                     'Accept'     => self::DEFAULT_CLIENT_ACCEPT,

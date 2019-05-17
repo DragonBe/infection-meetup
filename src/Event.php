@@ -13,6 +13,8 @@ namespace DragonBe\Meetup;
  */
 class Event implements EventInterface
 {
+    const DEFAULT_EVENT_ID = '';
+    const DEFAULT_RSVP_COUNT = 0;
     /**
      * The ID of the event
      *

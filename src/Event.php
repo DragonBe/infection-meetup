@@ -35,7 +35,7 @@ class Event implements EventInterface
         if (array_key_exists('id', $data)) {
             $this->id = (string) $data['id'];
         }
-        $this->rsvp = 0;
+        $this->rsvp = self::DEFAULT_RSVP_COUNT;
         if (array_key_exists('yes_rsvp_count', $data)) {
             $this->rsvp = $data['yes_rsvp_count'];
         }
